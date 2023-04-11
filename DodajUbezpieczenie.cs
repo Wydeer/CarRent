@@ -19,7 +19,7 @@ namespace Wypozyczalnia
             InitializeComponent();
         }
         string conn = Conn.conn;
-        
+
         public void pokaz_siatke()
         {
             SqlConnection connection = new SqlConnection(conn);
@@ -41,17 +41,36 @@ namespace Wypozyczalnia
             ubezpieczenie.data_od = dtp_DUdata_od.Value;
             ubezpieczenie.data_do = dtp_DUdata_do.Value;
             ubezpieczenie.typ = cbx_typ.Text;
-            
             SqlConnection connection = new SqlConnection(conn);
-            connection.Open();
-            SqlCommand command = new SqlCommand("INSERT INTO Ubezpieczenie (id_samochodu, data_od, data_do, typ) VALUES (@id_samochodu, @data_od, @data_do, @typ)", connection);
-            command.Parameters.AddWithValue("@id_samochodu", ubezpieczenie.id_samochodu);
-            command.Parameters.AddWithValue("@data_od", ubezpieczenie.data_od);
-            command.Parameters.AddWithValue("@data_do", ubezpieczenie.data_do);
-            command.Parameters.AddWithValue("@typ", ubezpieczenie.typ);
-            command.ExecuteNonQuery();
-            connection.Close();
-            MessageBox.Show("Dodano ubezpieczenie");
+            try
+            {
+                
+                connection.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO Ubezpieczenie (id_samochodu, data_od, data_do, typ) VALUES (@id_samochodu, @data_od, @data_do, @typ)", connection);
+                command.Parameters.AddWithValue("@id_samochodu", ubezpieczenie.id_samochodu);
+                command.Parameters.AddWithValue("@data_od", ubezpieczenie.data_od);
+                command.Parameters.AddWithValue("@data_do", ubezpieczenie.data_do);
+                command.Parameters.AddWithValue("@typ", ubezpieczenie.typ);
+                command.ExecuteNonQuery();
+
+
+                SqlCommand updateCommand = new SqlCommand("UPDATE Samochod SET status = 'Dostępny' WHERE id_samochodu = @id_samochodu", connection);
+                updateCommand.Parameters.AddWithValue("@id_samochodu", ubezpieczenie.id_samochodu);
+                updateCommand.ExecuteNonQuery();
+                MessageBox.Show("Dodano ubezpieczenie");
+            }
+            
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            ;
+            }
+            finally
+            {
+
+                connection.Close();
+            }
+
             this.Hide();
             Ubezpieczenia ubezpieczenia = new Ubezpieczenia();
             ubezpieczenia.Show();

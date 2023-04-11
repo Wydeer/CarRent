@@ -26,7 +26,7 @@ namespace Wypozyczalnia
         {
             SqlConnection connection = new SqlConnection(conn);
             connection.Open();
-            SqlCommand command = new SqlCommand("SELECT Ubezpieczenie.id_ubezpieczenia ,Samochod.numer_rej, Ubezpieczenie.data_od, Ubezpieczenie.data_do, Ubezpieczenie.typ FROM Samochod JOIN Ubezpieczenie ON Samochod.id_samochodu = Ubezpieczenie.id_samochodu;", connection);
+            SqlCommand command = new SqlCommand("SELECT Ubezpieczenie.id_ubezpieczenia ,Ubezpieczenie.id_samochodu ,Samochod.numer_rej, Ubezpieczenie.data_od, Ubezpieczenie.data_do, Ubezpieczenie.typ FROM Samochod JOIN Ubezpieczenie ON Samochod.id_samochodu = Ubezpieczenie.id_samochodu;", connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
             DataTable table = new DataTable();
             adapter.Fill(table);
@@ -47,21 +47,36 @@ namespace Wypozyczalnia
         {
             pokaz_siatke();
             dgv_ubezpieczenia.Columns[0].Visible = false;
+            dgv_ubezpieczenia.Columns[1].Visible = false;
 
         }
 
         private void btn_UUsun_Click(object sender, EventArgs e)
         {
+            Ubezpieczenie ubezpieczenie = new Ubezpieczenie();
+            ubezpieczenie.id_samochodu = Convert.ToInt32(dgv_ubezpieczenia.CurrentRow.Cells[1].Value);
+
+            SqlConnection conn = new SqlConnection(Conn.conn);
             if (MessageBox.Show("Czy na pewno chcesz usunać to ubezpieczenie?", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
             {
-                SqlConnection conn = new SqlConnection(Conn.conn);
+                try { 
                 conn.Open();
                 SqlCommand command = new SqlCommand("DELETE FROM Ubezpieczenie WHERE id_ubezpieczenia = @id_ubezpieczenia", conn);
                 command.Parameters.AddWithValue("@id_ubezpieczenia", dgv_ubezpieczenia.CurrentRow.Cells[0].Value);
                 command.ExecuteNonQuery();
-                conn.Close();
+
+                SqlCommand updateCommand = new SqlCommand("UPDATE Samochod SET status = 'Nieprzypisany' WHERE id_samochodu = @id_samochodu", conn);
+                updateCommand.Parameters.AddWithValue("@id_samochodu", ubezpieczenie.id_samochodu);
+                updateCommand.ExecuteNonQuery();
+
                 MessageBox.Show("Usunięto ubezpieczenie");
-                
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                finally { conn.Close(); }
+
             }
             pokaz_siatke();
         }
@@ -92,9 +107,9 @@ namespace Wypozyczalnia
         private void dgv_ubezpieczenia_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dgv_ubezpieczenia.CurrentRow.Selected = true;
-            dtp_EUdata_od.Text = dgv_ubezpieczenia.CurrentRow.Cells[2].Value.ToString();
-            dtp_EUdata_do.Text = dgv_ubezpieczenia.CurrentRow.Cells[3].Value.ToString();
-            cbx_EUtyp.Text = dgv_ubezpieczenia.CurrentRow.Cells[4].Value.ToString();
+            dtp_EUdata_od.Text = dgv_ubezpieczenia.CurrentRow.Cells[3].Value.ToString();
+            dtp_EUdata_do.Text = dgv_ubezpieczenia.CurrentRow.Cells[4].Value.ToString();
+            cbx_EUtyp.Text = dgv_ubezpieczenia.CurrentRow.Cells[5].Value.ToString();
 
             
         }

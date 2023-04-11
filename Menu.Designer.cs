@@ -38,7 +38,7 @@
             // btn_Samochody
             // 
             this.btn_Samochody.Location = new System.Drawing.Point(140, 84);
-            this.btn_Samochody.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Samochody.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Samochody.Name = "btn_Samochody";
             this.btn_Samochody.Size = new System.Drawing.Size(80, 19);
             this.btn_Samochody.TabIndex = 0;
@@ -49,7 +49,7 @@
             // btn_Klienci
             // 
             this.btn_Klienci.Location = new System.Drawing.Point(308, 83);
-            this.btn_Klienci.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Klienci.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Klienci.Name = "btn_Klienci";
             this.btn_Klienci.Size = new System.Drawing.Size(56, 19);
             this.btn_Klienci.TabIndex = 1;
@@ -60,7 +60,7 @@
             // btn_Ubezpieczenie
             // 
             this.btn_Ubezpieczenie.Location = new System.Drawing.Point(158, 167);
-            this.btn_Ubezpieczenie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Ubezpieczenie.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Ubezpieczenie.Name = "btn_Ubezpieczenie";
             this.btn_Ubezpieczenie.Size = new System.Drawing.Size(106, 19);
             this.btn_Ubezpieczenie.TabIndex = 2;
@@ -71,17 +71,18 @@
             // btn_Wypożyczenie
             // 
             this.btn_Wypożyczenie.Location = new System.Drawing.Point(320, 167);
-            this.btn_Wypożyczenie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Wypożyczenie.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Wypożyczenie.Name = "btn_Wypożyczenie";
             this.btn_Wypożyczenie.Size = new System.Drawing.Size(89, 19);
             this.btn_Wypożyczenie.TabIndex = 3;
             this.btn_Wypożyczenie.Text = "Wypożyczenia";
             this.btn_Wypożyczenie.UseVisualStyleBackColor = true;
+            this.btn_Wypożyczenie.Click += new System.EventHandler(this.btn_Wypożyczenie_Click);
             // 
             // btn_Rezerwacje
             // 
             this.btn_Rezerwacje.Location = new System.Drawing.Point(228, 227);
-            this.btn_Rezerwacje.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_Rezerwacje.Margin = new System.Windows.Forms.Padding(2);
             this.btn_Rezerwacje.Name = "btn_Rezerwacje";
             this.btn_Rezerwacje.Size = new System.Drawing.Size(86, 19);
             this.btn_Rezerwacje.TabIndex = 4;
@@ -98,7 +99,7 @@
             this.Controls.Add(this.btn_Ubezpieczenie);
             this.Controls.Add(this.btn_Klienci);
             this.Controls.Add(this.btn_Samochody);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Menu";
             this.Text = "Menu";
             this.ResumeLayout(false);

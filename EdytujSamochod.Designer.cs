@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -39,7 +38,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btn_ESCofnij = new System.Windows.Forms.Button();
             this.btn_ESEdytuj = new System.Windows.Forms.Button();
-            this.cbx_ESstatus = new System.Windows.Forms.ComboBox();
             this.num_ESkaucja = new System.Windows.Forms.NumericUpDown();
             this.cbx_ESrodzaj_skrzyni = new System.Windows.Forms.ComboBox();
             this.num_EScena_za_dzien = new System.Windows.Forms.NumericUpDown();
@@ -55,15 +53,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_EScena_za_dzien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ESrok_produkcji)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(69, 291);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
-            this.label9.TabIndex = 39;
-            this.label9.Text = "Status:";
             // 
             // label8
             // 
@@ -139,7 +128,7 @@
             // 
             // btn_ESCofnij
             // 
-            this.btn_ESCofnij.Location = new System.Drawing.Point(205, 351);
+            this.btn_ESCofnij.Location = new System.Drawing.Point(205, 305);
             this.btn_ESCofnij.Name = "btn_ESCofnij";
             this.btn_ESCofnij.Size = new System.Drawing.Size(75, 23);
             this.btn_ESCofnij.TabIndex = 30;
@@ -149,24 +138,13 @@
             // 
             // btn_ESEdytuj
             // 
-            this.btn_ESEdytuj.Location = new System.Drawing.Point(83, 351);
+            this.btn_ESEdytuj.Location = new System.Drawing.Point(83, 305);
             this.btn_ESEdytuj.Name = "btn_ESEdytuj";
             this.btn_ESEdytuj.Size = new System.Drawing.Size(75, 23);
             this.btn_ESEdytuj.TabIndex = 29;
             this.btn_ESEdytuj.Text = "Dodaj";
             this.btn_ESEdytuj.UseVisualStyleBackColor = true;
             this.btn_ESEdytuj.Click += new System.EventHandler(this.btn_ESEdytuj_Click);
-            // 
-            // cbx_ESstatus
-            // 
-            this.cbx_ESstatus.FormattingEnabled = true;
-            this.cbx_ESstatus.Items.AddRange(new object[] {
-            "Dostępny",
-            "Niedostępny"});
-            this.cbx_ESstatus.Location = new System.Drawing.Point(194, 288);
-            this.cbx_ESstatus.Name = "cbx_ESstatus";
-            this.cbx_ESstatus.Size = new System.Drawing.Size(121, 21);
-            this.cbx_ESstatus.TabIndex = 28;
             // 
             // num_ESkaucja
             // 
@@ -284,7 +262,6 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txt_ESnumer_rej);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -295,7 +272,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_ESCofnij);
             this.Controls.Add(this.btn_ESEdytuj);
-            this.Controls.Add(this.cbx_ESstatus);
             this.Controls.Add(this.num_ESkaucja);
             this.Controls.Add(this.cbx_ESrodzaj_skrzyni);
             this.Controls.Add(this.num_EScena_za_dzien);
@@ -316,8 +292,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -329,7 +303,6 @@
         private System.Windows.Forms.Button btn_ESCofnij;
         private System.Windows.Forms.Button btn_ESEdytuj;
         public System.Windows.Forms.TextBox txt_ESmarka;
-        public System.Windows.Forms.ComboBox cbx_ESstatus;
         public System.Windows.Forms.NumericUpDown num_ESkaucja;
         public System.Windows.Forms.ComboBox cbx_ESrodzaj_skrzyni;
         public System.Windows.Forms.NumericUpDown num_EScena_za_dzien;

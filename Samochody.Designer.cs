@@ -32,6 +32,7 @@
             this.btn_SDodaj = new System.Windows.Forms.Button();
             this.btn_SUsun = new System.Windows.Forms.Button();
             this.btn_SModyfikuj = new System.Windows.Forms.Button();
+            this.btn_specyfikacja = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_samochody)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,11 +79,22 @@
             this.btn_SModyfikuj.UseVisualStyleBackColor = true;
             this.btn_SModyfikuj.Click += new System.EventHandler(this.btn_SModyfikuj_Click);
             // 
+            // btn_specyfikacja
+            // 
+            this.btn_specyfikacja.Location = new System.Drawing.Point(688, 444);
+            this.btn_specyfikacja.Name = "btn_specyfikacja";
+            this.btn_specyfikacja.Size = new System.Drawing.Size(100, 23);
+            this.btn_specyfikacja.TabIndex = 4;
+            this.btn_specyfikacja.Text = "Specyfikacja";
+            this.btn_specyfikacja.UseVisualStyleBackColor = true;
+            this.btn_specyfikacja.Click += new System.EventHandler(this.btn_specyfikacja_Click);
+            // 
             // Samochody
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 489);
+            this.Controls.Add(this.btn_specyfikacja);
             this.Controls.Add(this.btn_SModyfikuj);
             this.Controls.Add(this.btn_SUsun);
             this.Controls.Add(this.btn_SDodaj);
@@ -100,5 +112,6 @@
         private System.Windows.Forms.Button btn_SUsun;
         private System.Windows.Forms.Button btn_SModyfikuj;
         public System.Windows.Forms.DataGridView dgv_samochody;
+        private System.Windows.Forms.Button btn_specyfikacja;
     }
 }

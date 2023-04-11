@@ -36,7 +36,6 @@
             this.num_cena_za_dzien = new System.Windows.Forms.NumericUpDown();
             this.cbx_rodzaj_skrzyni = new System.Windows.Forms.ComboBox();
             this.num_kaucja = new System.Windows.Forms.NumericUpDown();
-            this.cbx_status = new System.Windows.Forms.ComboBox();
             this.btn_DSDodaj = new System.Windows.Forms.Button();
             this.btn_DSCofnij = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -47,7 +46,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.Numer = new System.Windows.Forms.Label();
             this.txt_numer_rej = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.num_rok_produkcji)).BeginInit();
@@ -137,20 +135,9 @@
             this.num_kaucja.Size = new System.Drawing.Size(120, 20);
             this.num_kaucja.TabIndex = 7;
             // 
-            // cbx_status
-            // 
-            this.cbx_status.FormattingEnabled = true;
-            this.cbx_status.Items.AddRange(new object[] {
-            "Dostępny",
-            "Niedostępny"});
-            this.cbx_status.Location = new System.Drawing.Point(209, 309);
-            this.cbx_status.Name = "cbx_status";
-            this.cbx_status.Size = new System.Drawing.Size(121, 21);
-            this.cbx_status.TabIndex = 8;
-            // 
             // btn_DSDodaj
             // 
-            this.btn_DSDodaj.Location = new System.Drawing.Point(146, 372);
+            this.btn_DSDodaj.Location = new System.Drawing.Point(102, 333);
             this.btn_DSDodaj.Name = "btn_DSDodaj";
             this.btn_DSDodaj.Size = new System.Drawing.Size(75, 23);
             this.btn_DSDodaj.TabIndex = 9;
@@ -160,7 +147,7 @@
             // 
             // btn_DSCofnij
             // 
-            this.btn_DSCofnij.Location = new System.Drawing.Point(255, 372);
+            this.btn_DSCofnij.Location = new System.Drawing.Point(211, 333);
             this.btn_DSCofnij.Name = "btn_DSCofnij";
             this.btn_DSCofnij.Size = new System.Drawing.Size(75, 23);
             this.btn_DSCofnij.TabIndex = 10;
@@ -240,15 +227,6 @@
             this.label8.TabIndex = 18;
             this.label8.Text = "Kaucja:";
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(84, 312);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(40, 13);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Status:";
-            // 
             // Numer
             // 
             this.Numer.AutoSize = true;
@@ -269,10 +247,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 450);
+            this.ClientSize = new System.Drawing.Size(436, 450);
             this.Controls.Add(this.Numer);
             this.Controls.Add(this.txt_numer_rej);
-            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -283,7 +260,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_DSCofnij);
             this.Controls.Add(this.btn_DSDodaj);
-            this.Controls.Add(this.cbx_status);
             this.Controls.Add(this.num_kaucja);
             this.Controls.Add(this.cbx_rodzaj_skrzyni);
             this.Controls.Add(this.num_cena_za_dzien);
@@ -312,7 +288,6 @@
         private System.Windows.Forms.NumericUpDown num_cena_za_dzien;
         private System.Windows.Forms.ComboBox cbx_rodzaj_skrzyni;
         private System.Windows.Forms.NumericUpDown num_kaucja;
-        private System.Windows.Forms.ComboBox cbx_status;
         private System.Windows.Forms.Button btn_DSDodaj;
         private System.Windows.Forms.Button btn_DSCofnij;
         private System.Windows.Forms.Label label1;
@@ -323,7 +298,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label Numer;
         private System.Windows.Forms.TextBox txt_numer_rej;
     }

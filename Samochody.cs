@@ -79,7 +79,7 @@ namespace Wypozyczalnia
             samochod.cena_za_dzien = Convert.ToInt32(dgv_samochody.CurrentRow.Cells[7].Value);
             samochod.rodzaj_skrzyni = dgv_samochody.CurrentRow.Cells[8].Value.ToString();
             samochod.kaucja = Convert.ToInt32(dgv_samochody.CurrentRow.Cells[9].Value);
-            samochod.status = dgv_samochody.CurrentRow.Cells[10].Value.ToString();
+            //samochod.status = dgv_samochody.CurrentRow.Cells[10].Value.ToString();
 
             
             
@@ -94,12 +94,27 @@ namespace Wypozyczalnia
             edytuj_samochod.num_EScena_za_dzien.Value = samochod.cena_za_dzien;
             edytuj_samochod.cbx_ESrodzaj_skrzyni.Text = samochod.rodzaj_skrzyni;
             edytuj_samochod.num_ESkaucja.Value = samochod.kaucja;
-            edytuj_samochod.cbx_ESstatus.Text = samochod.status;
+            //edytuj_samochod.cbx_ESstatus.Text = samochod.status;
             edytuj_samochod.label10.Text = samochod.id_samochodu.ToString();
 
 
             this.Hide();
             edytuj_samochod.Show();
+
+        }
+
+        private void btn_specyfikacja_Click(object sender, EventArgs e)
+        {
+            Samochod samochod = new Samochod();
+            samochod.id_samochodu = (int)dgv_samochody.CurrentRow.Cells[0].Value;
+
+            DodajSpecyfikacje dodajSpecyfikacje = new DodajSpecyfikacje();
+            dodajSpecyfikacje.label8.Text = samochod.id_samochodu.ToString();
+            this.Hide();
+            dodajSpecyfikacje.Show();
+
+
+
 
         }
     }

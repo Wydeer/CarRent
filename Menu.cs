@@ -37,5 +37,12 @@ namespace Wypozyczalnia
             Ubezpieczenia ubezpieczenia = new Ubezpieczenia();
             ubezpieczenia.Show();
         }
+
+        private void btn_Wypożyczenie_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Wypozyczenia wypozyczenia = new Wypozyczenia();
+            wypozyczenia.Show();
+        }
     }
 }
