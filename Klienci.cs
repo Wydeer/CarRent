@@ -22,15 +22,15 @@ namespace Wypozyczalnia
 
         public void pokaz_siatke()
         {
-            SqlConnection connection = new SqlConnection(conn);
-            connection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Klient", connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            dgv_klienci.DataSource = table;
-            connection.Close();
+            
 
+            SqlConnection connection = new SqlConnection(conn);
+            DataSet ds = new DataSet();
+            connection.Open();
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Klient", connection);
+            adapter.Fill(ds, "Klient");
+            dgv_klienci.DataSource = ds.Tables["Klient"];
+            connection.Close();
         }
 
         private void btn_KDodaj_Click(object sender, EventArgs e)
@@ -43,8 +43,10 @@ namespace Wypozyczalnia
 
         private void Klienci_Load(object sender, EventArgs e)
         {
-            pokaz_siatke();
-            dgv_klienci.Columns[0].Visible = false;
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'wypozyczalniaDataSet.Klient' . Możesz go przenieść lub usunąć.
+            this.klientTableAdapter.Fill(this.wypozyczalniaDataSet.Klient);
+            //pokaz_siatke();
+            //dgv_klienci.Columns[0].Visible = false;
         }
 
         private void btn_KUsun_Click(object sender, EventArgs e)
@@ -93,6 +95,14 @@ namespace Wypozyczalnia
 
             this.Hide();
             edytuj_klienta.Show();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu menu = new Menu();
+            menu.Show();
+
         }
     }
 }

@@ -231,7 +231,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(161, 416);
+            this.label10.Location = new System.Drawing.Point(159, 353);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 40;
@@ -258,7 +258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 450);
+            this.ClientSize = new System.Drawing.Size(377, 385);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txt_ESnumer_rej);
             this.Controls.Add(this.label10);

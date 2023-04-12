@@ -104,8 +104,8 @@
             // 
             this.num_cena_za_dzien.Location = new System.Drawing.Point(209, 230);
             this.num_cena_za_dzien.Maximum = new decimal(new int[] {
-            2023,
-            0,
+            1215752191,
+            23,
             0,
             0});
             this.num_cena_za_dzien.Name = "num_cena_za_dzien";
@@ -127,8 +127,8 @@
             // 
             this.num_kaucja.Location = new System.Drawing.Point(209, 283);
             this.num_kaucja.Maximum = new decimal(new int[] {
-            2023,
-            0,
+            1215752191,
+            23,
             0,
             0});
             this.num_kaucja.Name = "num_kaucja";
@@ -247,7 +247,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 450);
+            this.ClientSize = new System.Drawing.Size(436, 392);
             this.Controls.Add(this.Numer);
             this.Controls.Add(this.txt_numer_rej);
             this.Controls.Add(this.label8);

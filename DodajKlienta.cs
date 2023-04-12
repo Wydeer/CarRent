@@ -39,27 +39,31 @@ namespace Wypozyczalnia
             klient.data_waznosci_prawa_jazdy = dtp_data_waznosci_pj.Value;
             klient.numer_dowodu = txt_numer_dowodu.Text;
 
+            
+
             SqlConnection sqlConnection = new SqlConnection(conn);
             sqlConnection.Open();
-            SqlCommand command = new SqlCommand("INSERT INTO Klient ( imie ,nazwisko,data_ur,pesel,telefon ,mail,staly_klient ,data_waznosci_prawa_jazdy  ,numer_dowodu) VALUES (@imie,@nazwisko,@dataur,@pesel,@telefon,@email,@stalyklient,@datawaznosciprawka,@numerdowodu)", sqlConnection);
-            command.Parameters.AddWithValue("@imie",klient.imie);
-            command.Parameters.AddWithValue("@nazwisko",klient.nazwisko);
-            command.Parameters.AddWithValue("@dataur",klient.data_ur);
-            command.Parameters.AddWithValue("@pesel",klient.pesel);
+            SqlCommand command = new SqlCommand("INSERT INTO Klient (imie, nazwisko, data_ur, pesel, telefon, mail, staly_klient, data_waznosci_prawa_jazdy, numer_dowodu) VALUES (@imie,@nazwisko,@dataur,@pesel,@telefon,@email,@stalyklient,@datawaznosciprawka,@numerdowodu)", sqlConnection);
+            command.Parameters.AddWithValue("@imie", klient.imie);
+            command.Parameters.AddWithValue("@nazwisko", klient.nazwisko);
+            command.Parameters.AddWithValue("@dataur", klient.data_ur);
+            command.Parameters.AddWithValue("@pesel", klient.pesel);
             command.Parameters.AddWithValue("@telefon", klient.telefon);
-            command.Parameters.AddWithValue("@email",klient.email);
+            command.Parameters.AddWithValue("@email", klient.email);
             command.Parameters.AddWithValue("@stalyklient", klient.staly_klient);
             command.Parameters.AddWithValue("@datawaznosciprawka", klient.data_waznosci_prawa_jazdy);
             command.Parameters.AddWithValue("@numerdowodu", klient.numer_dowodu);
 
+            SqlDataAdapter adapter = new SqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds, "Klient");
 
-            command.ExecuteNonQuery();
             sqlConnection.Close();
             MessageBox.Show("Dodano nowego klienta");
 
             this.Hide();
             klienci.ShowDialog();
-            klienci.pokaz_siatke();
+            klienci.dgv_klienci.DataSource = ds.Tables["Klient"];
 
         }
         private void btn_DKCofnij_Click(object sender, EventArgs e)

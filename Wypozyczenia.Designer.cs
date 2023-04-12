@@ -28,18 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgv_Wypozyczenia = new System.Windows.Forms.DataGridView();
             this.btn_DodajWypo = new System.Windows.Forms.Button();
             this.btn_Zwrot = new System.Windows.Forms.Button();
+            this.wypozyczalniaDataSet = new Wypozyczalnia.WypozyczalniaDataSet();
+            this.wypozyczeniaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.wypozyczeniaTableAdapter = new Wypozyczalnia.WypozyczalniaDataSetTableAdapters.WypozyczeniaTableAdapter();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Wypozyczenia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wypozyczalniaDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wypozyczeniaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_Wypozyczenia
             // 
+            this.dgv_Wypozyczenia.AllowUserToAddRows = false;
+            this.dgv_Wypozyczenia.AllowUserToDeleteRows = false;
             this.dgv_Wypozyczenia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_Wypozyczenia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_Wypozyczenia.Location = new System.Drawing.Point(12, 12);
             this.dgv_Wypozyczenia.Name = "dgv_Wypozyczenia";
+            this.dgv_Wypozyczenia.ReadOnly = true;
             this.dgv_Wypozyczenia.Size = new System.Drawing.Size(776, 325);
             this.dgv_Wypozyczenia.TabIndex = 0;
             // 
@@ -63,11 +73,36 @@
             this.btn_Zwrot.UseVisualStyleBackColor = true;
             this.btn_Zwrot.Click += new System.EventHandler(this.btn_Zwrot_Click);
             // 
+            // wypozyczalniaDataSet
+            // 
+            this.wypozyczalniaDataSet.DataSetName = "WypozyczalniaDataSet";
+            this.wypozyczalniaDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // wypozyczeniaBindingSource
+            // 
+            this.wypozyczeniaBindingSource.DataMember = "Wypozyczenia";
+            this.wypozyczeniaBindingSource.DataSource = this.wypozyczalniaDataSet;
+            // 
+            // wypozyczeniaTableAdapter
+            // 
+            this.wypozyczeniaTableAdapter.ClearBeforeFill = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 395);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Cofnij";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Wypozyczenia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 398);
+            this.ClientSize = new System.Drawing.Size(800, 419);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_Zwrot);
             this.Controls.Add(this.btn_DodajWypo);
             this.Controls.Add(this.dgv_Wypozyczenia);
@@ -75,6 +110,8 @@
             this.Text = "Wyporzyczenia";
             this.Load += new System.EventHandler(this.Wypozyczenia_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Wypozyczenia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wypozyczalniaDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.wypozyczeniaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -84,5 +121,9 @@
         private System.Windows.Forms.DataGridView dgv_Wypozyczenia;
         private System.Windows.Forms.Button btn_DodajWypo;
         private System.Windows.Forms.Button btn_Zwrot;
+        private WypozyczalniaDataSet wypozyczalniaDataSet;
+        private System.Windows.Forms.BindingSource wypozyczeniaBindingSource;
+        private WypozyczalniaDataSetTableAdapters.WypozyczeniaTableAdapter wypozyczeniaTableAdapter;
+        private System.Windows.Forms.Button button1;
     }
 }

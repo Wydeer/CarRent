@@ -34,21 +34,28 @@ namespace Wypozyczalnia
 
             SqlConnection sqlConnection = new SqlConnection(conn);
             sqlConnection.Open();
-            SqlCommand command = new SqlCommand("UPDATE Samochod SET marka = @marka, model = @model, numer_rej = @numer_rej ,rok_produkcji = @rok_produkcji, rodzaj_paliwa = @rodzaj_paliwa, kolor = @kolor, cena_za_dzien = @cena_za_dzien, rodzaj_skrzyni = @rodzaj_skrzyni, kaucja = @kaucja WHERE id_samochodu = @id", sqlConnection);
-            command.Parameters.AddWithValue("@id", label10.Text);
-            command.Parameters.AddWithValue("@marka", txt_ESmarka.Text);
-            command.Parameters.AddWithValue("@model", txt_ESmodel.Text);
-            command.Parameters.AddWithValue("@numer_rej", txt_ESnumer_rej.Text);
-            command.Parameters.AddWithValue("@rok_produkcji", num_ESrok_produkcji.Value);
-            command.Parameters.AddWithValue("@rodzaj_paliwa", cbx_ESrodzaj_paliwa.Text);
-            command.Parameters.AddWithValue("@kolor", txt_ESkolor.Text);
-            command.Parameters.AddWithValue("@cena_za_dzien", num_EScena_za_dzien.Value);
-            command.Parameters.AddWithValue("@rodzaj_skrzyni", cbx_ESrodzaj_skrzyni.Text);
-            command.Parameters.AddWithValue("@kaucja", num_ESkaucja.Value);
-            //command.Parameters.AddWithValue("@status", cbx_ESstatus.Text);
-            
 
-            command.ExecuteNonQuery();
+            SqlDataAdapter dataAdapter = new SqlDataAdapter("SELECT * FROM Samochod WHERE id_samochodu = @id", sqlConnection);
+            dataAdapter.SelectCommand.Parameters.AddWithValue("@id", label10.Text);
+
+            SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+            DataSet dataSet = new DataSet();
+            dataAdapter.Fill(dataSet, "Samochod");
+
+            DataRow row = dataSet.Tables["Samochod"].Rows[0];
+            row["marka"] = txt_ESmarka.Text;
+            row["model"] = txt_ESmodel.Text;
+            row["numer_rej"] = txt_ESnumer_rej.Text;
+            row["rok_produkcji"] = num_ESrok_produkcji.Value;
+            row["rodzaj_paliwa"] = cbx_ESrodzaj_paliwa.Text;
+            row["kolor"] = txt_ESkolor.Text;
+            row["cena_za_dzien"] = num_EScena_za_dzien.Value;
+            row["rodzaj_skrzyni"] = cbx_ESrodzaj_skrzyni.Text;
+            row["kaucja"] = num_ESkaucja.Value;
+
+            dataAdapter.Update(dataSet, "Samochod");
+
             sqlConnection.Close();
             MessageBox.Show("Zaktualizowano dane samochodu");
 

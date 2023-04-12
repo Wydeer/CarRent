@@ -21,15 +21,17 @@ namespace Wypozyczalnia
         }
         public void pokaz_siatke()
         {
-            SqlConnection connection = new SqlConnection(conn);
-            connection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Samochod", connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            dgv_samochody.DataSource = table;
-            connection.Close();
+            
+            //SqlConnection connection = new SqlConnection(conn);
+            //connection.Open();
 
+            //SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Samochod", connection);
+            //DataSet dataset = new DataSet();
+            //adapter.Fill(dataset, "Samochod");
+
+            //dgv_samochody.DataSource = dataset.Tables["Samochod"];
+
+            //connection.Close();
 
 
         }
@@ -46,24 +48,48 @@ namespace Wypozyczalnia
 
         private void Samochody_Load(object sender, EventArgs e)
         {
-            pokaz_siatke();
-            dgv_samochody.Columns[0].Visible = false;
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'wypozyczalniaDataSet.SpecyfikacjeSamochodow' . Możesz go przenieść lub usunąć.
+            this.specyfikacjeSamochodowTableAdapter.Fill(this.wypozyczalniaDataSet.SpecyfikacjeSamochodow);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'wypozyczalniaDataSet.Samochod' . Możesz go przenieść lub usunąć.
+            this.samochodTableAdapter.Fill(this.wypozyczalniaDataSet.Samochod);
+            //pokaz_siatke();
+            
         }
 
         private void btn_SUsun_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Czy na pewno chcesz usunać ten samochod?", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
-            { 
-                SqlConnection sqlConnection = new SqlConnection(conn);
-                sqlConnection.Open();
-                SqlCommand command = new SqlCommand("DELETE FROM Samochod WHERE id_samochodu = @id_samochodu", sqlConnection);
-                command.Parameters.AddWithValue("@id_samochodu", dgv_samochody.CurrentRow.Cells[0].Value);
-                command.ExecuteNonQuery();
-                sqlConnection.Close();
-                MessageBox.Show("Usunięto samochód z bazy danych");
-            }
+            
 
-        pokaz_siatke();
+            if (MessageBox.Show("Czy na pewno chcesz usunąć ten samochod?", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                int selectedRow = dgv_samochody.CurrentRow.Index;
+                int selectedId = Convert.ToInt32(dgv_samochody.Rows[selectedRow].Cells["id_samochodu"].Value);
+
+                using (SqlConnection connection = new SqlConnection(conn))
+                {
+                    connection.Open();
+
+                    // Usunięcie rekordów powiązanych z rekordem z tabeli "Samochod"
+                    SqlCommand deleteCommand = new SqlCommand("DELETE FROM SpecyfikacjeSamochodow WHERE id_samochodu = @id_samochodu", connection);
+                    deleteCommand.Parameters.AddWithValue("@id_samochodu", selectedId);
+                    deleteCommand.ExecuteNonQuery();
+
+                    // Usunięcie rekordu z tabeli "Samochod"
+                    SqlCommand deleteCommand2 = new SqlCommand("DELETE FROM Samochod WHERE id_samochodu = @id_samochodu", connection);
+                    deleteCommand2.Parameters.AddWithValue("@id_samochodu", selectedId);
+                    deleteCommand2.ExecuteNonQuery();
+
+                    MessageBox.Show("Usunięto samochód z bazy danych");
+
+                    // Odświeżanie danych w kontrolce DataGridView
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Samochod", connection);
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+                    dgv_samochody.DataSource = table;
+
+                    connection.Close();
+                }
+            }
         }
 
         private void btn_SModyfikuj_Click(object sender, EventArgs e)
@@ -116,6 +142,13 @@ namespace Wypozyczalnia
 
 
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Menu menu = new Menu();
+            menu.Show();
         }
     }
 }

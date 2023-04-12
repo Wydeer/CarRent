@@ -22,42 +22,55 @@ namespace Wypozyczalnia
 
         public void pokaz_siatke()
         {
+            
+
             SqlConnection connection = new SqlConnection(conn);
             connection.Open();
-            SqlCommand command = new SqlCommand("SELECT * FROM Samochod WHERE id_samochodu NOT IN (SELECT id_samochodu FROM Ubezpieczenie)", connection);
+            SqlCommand command = new SqlCommand("SELECT * FROM Samochod WHERE id_samochodu NOT IN (SELECT id_samochodu FROM Ubezpieczenie) AND status= 'Nieprzypisany'", connection);
             SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            dgv_Dubezpieczenie.DataSource = table;
+            DataSet dataset = new DataSet();
+            adapter.Fill(dataset, "Samochod");
+            dgv_Dubezpieczenie.DataSource = dataset.Tables["Samochod"];
             connection.Close();
-
-
 
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Ubezpieczenie ubezpieczenie = new Ubezpieczenie();
-            ubezpieczenie.id_samochodu = Convert.ToInt32(dgv_Dubezpieczenie.CurrentRow.Cells[0].Value);
-            ubezpieczenie.data_od = dtp_DUdata_od.Value;
-            ubezpieczenie.data_do = dtp_DUdata_do.Value;
-            ubezpieczenie.typ = cbx_typ.Text;
             SqlConnection connection = new SqlConnection(conn);
             try
             {
+                Ubezpieczenie ubezpieczenie = new Ubezpieczenie();
+                ubezpieczenie.id_samochodu = Convert.ToInt32(dgv_Dubezpieczenie.CurrentRow.Cells[0].Value);
+                ubezpieczenie.data_od = dtp_DUdata_od.Value;
+                ubezpieczenie.data_do = dtp_DUdata_do.Value;
+                ubezpieczenie.typ = cbx_typ.Text;
                 
-                connection.Open();
-                SqlCommand command = new SqlCommand("INSERT INTO Ubezpieczenie (id_samochodu, data_od, data_do, typ) VALUES (@id_samochodu, @data_od, @data_do, @typ)", connection);
-                command.Parameters.AddWithValue("@id_samochodu", ubezpieczenie.id_samochodu);
-                command.Parameters.AddWithValue("@data_od", ubezpieczenie.data_od);
-                command.Parameters.AddWithValue("@data_do", ubezpieczenie.data_do);
-                command.Parameters.AddWithValue("@typ", ubezpieczenie.typ);
-                command.ExecuteNonQuery();
+
+                if (ubezpieczenie.data_od > ubezpieczenie.data_do || ubezpieczenie.data_od == ubezpieczenie.data_do)
+                {
+                    MessageBox.Show("Błedna data");
+                }
+                else
+                {
+                    
+                    connection.Open();
+                    SqlCommand command = new SqlCommand("INSERT INTO Ubezpieczenie (id_samochodu, data_od, data_do, typ) VALUES (@id_samochodu, @data_od, @data_do, @typ)", connection);
+                    command.Parameters.AddWithValue("@id_samochodu", ubezpieczenie.id_samochodu);
+                    command.Parameters.AddWithValue("@data_od", ubezpieczenie.data_od);
+                    command.Parameters.AddWithValue("@data_do", ubezpieczenie.data_do);
+                    command.Parameters.AddWithValue("@typ", ubezpieczenie.typ);
+                    command.ExecuteNonQuery();
 
 
-                SqlCommand updateCommand = new SqlCommand("UPDATE Samochod SET status = 'Dostępny' WHERE id_samochodu = @id_samochodu", connection);
-                updateCommand.Parameters.AddWithValue("@id_samochodu", ubezpieczenie.id_samochodu);
-                updateCommand.ExecuteNonQuery();
-                MessageBox.Show("Dodano ubezpieczenie");
+                    SqlCommand updateCommand = new SqlCommand("UPDATE Samochod SET status = 'Dostępny' WHERE id_samochodu = @id_samochodu", connection);
+                    updateCommand.Parameters.AddWithValue("@id_samochodu", ubezpieczenie.id_samochodu);
+                    updateCommand.ExecuteNonQuery();
+                    MessageBox.Show("Dodano ubezpieczenie");
+
+                    this.Hide();
+                    Ubezpieczenia ubezpieczenia = new Ubezpieczenia();
+                    ubezpieczenia.Show();
+                }
             }
             
             catch (Exception ex)
@@ -71,14 +84,14 @@ namespace Wypozyczalnia
                 connection.Close();
             }
 
-            this.Hide();
-            Ubezpieczenia ubezpieczenia = new Ubezpieczenia();
-            ubezpieczenia.Show();
+            
 
         }
 
         private void DodajUbezpieczenie_Load(object sender, EventArgs e)
         {
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'wypozyczalniaDataSet.Samochod' . Możesz go przenieść lub usunąć.
+            this.samochodTableAdapter.Fill(this.wypozyczalniaDataSet.Samochod);
             pokaz_siatke();
             dgv_Dubezpieczenie.Columns[0].Visible = false;
         }
@@ -86,6 +99,13 @@ namespace Wypozyczalnia
         private void dtp_DUdata_od_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Ubezpieczenia ubezpieczenia = new Ubezpieczenia();
+            ubezpieczenia.Show();
         }
     }
 }

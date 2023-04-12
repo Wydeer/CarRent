@@ -53,8 +53,8 @@
             // 
             // btn_EKCofnij
             // 
-            this.btn_EKCofnij.Location = new System.Drawing.Point(310, 331);
-            this.btn_EKCofnij.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_EKCofnij.Location = new System.Drawing.Point(288, 294);
+            this.btn_EKCofnij.Margin = new System.Windows.Forms.Padding(2);
             this.btn_EKCofnij.Name = "btn_EKCofnij";
             this.btn_EKCofnij.Size = new System.Drawing.Size(56, 19);
             this.btn_EKCofnij.TabIndex = 59;
@@ -64,8 +64,8 @@
             // 
             // btn_EKDodaj
             // 
-            this.btn_EKDodaj.Location = new System.Drawing.Point(212, 331);
-            this.btn_EKDodaj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btn_EKDodaj.Location = new System.Drawing.Point(190, 294);
+            this.btn_EKDodaj.Margin = new System.Windows.Forms.Padding(2);
             this.btn_EKDodaj.Name = "btn_EKDodaj";
             this.btn_EKDodaj.Size = new System.Drawing.Size(56, 19);
             this.btn_EKDodaj.TabIndex = 58;
@@ -76,7 +76,7 @@
             // dtp_Edata_ur
             // 
             this.dtp_Edata_ur.Location = new System.Drawing.Point(268, 99);
-            this.dtp_Edata_ur.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dtp_Edata_ur.Margin = new System.Windows.Forms.Padding(2);
             this.dtp_Edata_ur.Name = "dtp_Edata_ur";
             this.dtp_Edata_ur.Size = new System.Drawing.Size(151, 20);
             this.dtp_Edata_ur.TabIndex = 57;
@@ -84,7 +84,7 @@
             // Edtp_data_waznosci_pj
             // 
             this.Edtp_data_waznosci_pj.Location = new System.Drawing.Point(268, 232);
-            this.Edtp_data_waznosci_pj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Edtp_data_waznosci_pj.Margin = new System.Windows.Forms.Padding(2);
             this.Edtp_data_waznosci_pj.Name = "Edtp_data_waznosci_pj";
             this.Edtp_data_waznosci_pj.Size = new System.Drawing.Size(151, 20);
             this.Edtp_data_waznosci_pj.TabIndex = 56;
@@ -93,17 +93,16 @@
             // 
             this.EcheckBox_staly_klient.AutoSize = true;
             this.EcheckBox_staly_klient.Location = new System.Drawing.Point(268, 197);
-            this.EcheckBox_staly_klient.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EcheckBox_staly_klient.Margin = new System.Windows.Forms.Padding(2);
             this.EcheckBox_staly_klient.Name = "EcheckBox_staly_klient";
-            this.EcheckBox_staly_klient.Size = new System.Drawing.Size(80, 17);
+            this.EcheckBox_staly_klient.Size = new System.Drawing.Size(15, 14);
             this.EcheckBox_staly_klient.TabIndex = 55;
-            this.EcheckBox_staly_klient.Text = "checkBox1";
             this.EcheckBox_staly_klient.UseVisualStyleBackColor = true;
             // 
             // Etxt_numer_dowodu
             // 
             this.Etxt_numer_dowodu.Location = new System.Drawing.Point(268, 256);
-            this.Etxt_numer_dowodu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Etxt_numer_dowodu.Margin = new System.Windows.Forms.Padding(2);
             this.Etxt_numer_dowodu.Name = "Etxt_numer_dowodu";
             this.Etxt_numer_dowodu.Size = new System.Drawing.Size(76, 20);
             this.Etxt_numer_dowodu.TabIndex = 54;
@@ -111,7 +110,7 @@
             // txt_Eemail
             // 
             this.txt_Eemail.Location = new System.Drawing.Point(268, 161);
-            this.txt_Eemail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Eemail.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Eemail.Name = "txt_Eemail";
             this.txt_Eemail.Size = new System.Drawing.Size(76, 20);
             this.txt_Eemail.TabIndex = 53;
@@ -119,7 +118,7 @@
             // txt_Etelefon
             // 
             this.txt_Etelefon.Location = new System.Drawing.Point(268, 129);
-            this.txt_Etelefon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Etelefon.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Etelefon.Name = "txt_Etelefon";
             this.txt_Etelefon.Size = new System.Drawing.Size(76, 20);
             this.txt_Etelefon.TabIndex = 52;
@@ -127,7 +126,7 @@
             // txt_Epesel
             // 
             this.txt_Epesel.Location = new System.Drawing.Point(268, 72);
-            this.txt_Epesel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Epesel.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Epesel.Name = "txt_Epesel";
             this.txt_Epesel.Size = new System.Drawing.Size(76, 20);
             this.txt_Epesel.TabIndex = 51;
@@ -135,7 +134,7 @@
             // txt_Enazwisko
             // 
             this.txt_Enazwisko.Location = new System.Drawing.Point(268, 43);
-            this.txt_Enazwisko.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Enazwisko.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Enazwisko.Name = "txt_Enazwisko";
             this.txt_Enazwisko.Size = new System.Drawing.Size(76, 20);
             this.txt_Enazwisko.TabIndex = 50;
@@ -223,7 +222,7 @@
             // txt_Eimie
             // 
             this.txt_Eimie.Location = new System.Drawing.Point(268, 16);
-            this.txt_Eimie.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txt_Eimie.Margin = new System.Windows.Forms.Padding(2);
             this.txt_Eimie.Name = "txt_Eimie";
             this.txt_Eimie.Size = new System.Drawing.Size(76, 20);
             this.txt_Eimie.TabIndex = 41;
@@ -241,7 +240,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(278, 361);
+            this.label10.Location = new System.Drawing.Point(242, 331);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 13);
@@ -252,7 +251,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(611, 384);
+            this.ClientSize = new System.Drawing.Size(485, 384);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.btn_EKCofnij);
             this.Controls.Add(this.btn_EKDodaj);
@@ -274,7 +273,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_Eimie);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EdytujKlienta";
             this.Text = "EdytujKlienta";
             this.ResumeLayout(false);

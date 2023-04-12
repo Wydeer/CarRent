@@ -127,6 +127,11 @@
     <Compile Include="Ubezpieczenia.Designer.cs">
       <DependentUpon>Ubezpieczenia.cs</DependentUpon>
     </Compile>
+    <Compile Include="WypozyczalniaDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WypozyczalniaDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Wypozyczenia.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +195,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="WypozyczalniaDataSet1.xsc">
+      <DependentUpon>WypozyczalniaDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="WypozyczalniaDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>WypozyczalniaDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="WypozyczalniaDataSet1.xss">
+      <DependentUpon>WypozyczalniaDataSet1.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -21,26 +21,48 @@ namespace Wypozyczalnia
         }
         public void pokaz_siatke_samochody()
         {
+            
             SqlConnection connection = new SqlConnection(conn);
-            connection.Open();
-            SqlCommand command = new SqlCommand("SELECT id_samochodu, marka, model, numer_rej, cena_za_dzien, kaucja FROM Samochod WHERE status = 'Dostępny'", connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            dgv_DWsamochody.DataSource = table;
-            connection.Close();
+            DataSet ds = new DataSet();
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT id_samochodu, marka, model, numer_rej, cena_za_dzien, kaucja FROM Samochod WHERE status = 'Dostępny'", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(ds, "Samochod");
+                dgv_DWsamochody.DataSource = ds.Tables["Samochod"];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
 
         }
         public void pokaz_siatke_klienci()
         {
+            
             SqlConnection connection = new SqlConnection(conn);
-            connection.Open();
-            SqlCommand command = new SqlCommand("SELECT id_klienta, imie, nazwisko, pesel, data_waznosci_prawa_jazdy, staly_klient FROM Klient", connection);
-            SqlDataAdapter adapter = new SqlDataAdapter(command);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            dgv_DWklienci.DataSource = table;
-            connection.Close();
+            DataSet ds = new DataSet();
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT id_klienta, imie, nazwisko, pesel, data_waznosci_prawa_jazdy, staly_klient FROM Klient", connection);
+                SqlDataAdapter adapter = new SqlDataAdapter(command);
+                adapter.Fill(ds, "Klient");
+                dgv_DWklienci.DataSource = ds.Tables["Klient"];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         private void btn_DodajWypo_Click(object sender, EventArgs e)
@@ -112,8 +134,14 @@ namespace Wypozyczalnia
 
         private void DodajWyporzyczenie_Load(object sender, EventArgs e)
         {
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'wypozyczalniaDataSet.Klient' . Możesz go przenieść lub usunąć.
+            this.klientTableAdapter.Fill(this.wypozyczalniaDataSet.Klient);
+            // TODO: Ten wiersz kodu wczytuje dane do tabeli 'wypozyczalniaDataSet.Samochod' . Możesz go przenieść lub usunąć.
+            this.samochodTableAdapter.Fill(this.wypozyczalniaDataSet.Samochod);
             pokaz_siatke_samochody();
-            pokaz_siatke_klienci();
+            //pokaz_siatke_klienci();
+            //dgv_DWklienci.Columns[0].Visible = false;
+            dgv_DWsamochody.Columns[0].Visible = false;
         }
 
         private void dgv_DWsamochody_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -189,6 +217,13 @@ namespace Wypozyczalnia
         private void dtp_Datawypo_ValueChanged(object sender, EventArgs e)
         {
             kwota();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Wypozyczenia wypozyczenia = new Wypozyczenia();
+            wypozyczenia.Show();
         }
     }
 }

@@ -38,33 +38,55 @@ namespace Wypozyczalnia
             samochod.kaucja = (int)num_kaucja.Value;
             //samochod.status = (string)cbx_status.SelectedItem;
 
-            
-            
-            
-            SqlConnection connection = new SqlConnection(conn);
-            connection.Open();
-            SqlCommand command = new SqlCommand("INSERT INTO Samochod (marka, model, numer_rej, rok_produkcji, rodzaj_paliwa, kolor, cena_za_dzien, rodzaj_skrzyni, kaucja) VALUES (@marka, @model, @numer_rej,@rok_produkcji, @rodzaj_paliwa, @kolor, @cena_za_dzien, @rodzaj_skrzyni, @kaucja)", connection);
-            command.Parameters.AddWithValue("@marka", samochod.marka);
-            command.Parameters.AddWithValue("@model", samochod.model);
-            command.Parameters.AddWithValue("@numer_rej", samochod.numer_rejestracyjny);
-            command.Parameters.AddWithValue("@rok_produkcji", samochod.rok_produkcji);
-            command.Parameters.AddWithValue("@rodzaj_paliwa", samochod.rodzaj_paliwa);
-            command.Parameters.AddWithValue("@kolor", samochod.kolor);
-            command.Parameters.AddWithValue("@cena_za_dzien", samochod.cena_za_dzien);
-            command.Parameters.AddWithValue("@rodzaj_skrzyni", samochod.rodzaj_skrzyni);
-            command.Parameters.AddWithValue("@kaucja", samochod.kaucja);
-            //command.Parameters.AddWithValue("@status", samochod.status);
 
-            command.ExecuteNonQuery();
-            connection.Close();
-            MessageBox.Show("Dodano samochód do bazy danych");
 
-            this.Hide();
-            samochody.ShowDialog();
-            samochody.pokaz_siatke();
-            
-            
-            
+
+
+            try
+            {
+                // utworzenie połączenia z bazą danych
+                SqlConnection connection = new SqlConnection(conn);
+                connection.Open();
+
+                // utworzenie adaptera danych
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Samochod", connection);
+                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(adapter);
+
+                // utworzenie tabeli z danymi
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+
+                // dodanie nowego wiersza do tabeli
+                DataRow row = table.NewRow();
+                row["marka"] = samochod.marka;
+                row["model"] = samochod.model;
+                row["numer_rej"] = samochod.numer_rejestracyjny;
+                row["rok_produkcji"] = samochod.rok_produkcji;
+                row["rodzaj_paliwa"] = samochod.rodzaj_paliwa;
+                row["kolor"] = samochod.kolor;
+                row["cena_za_dzien"] = samochod.cena_za_dzien;
+                row["rodzaj_skrzyni"] = samochod.rodzaj_skrzyni;
+                row["kaucja"] = samochod.kaucja;
+                table.Rows.Add(row);
+
+                // zaktualizowanie bazy danych
+                adapter.Update(table);
+
+                // zamknięcie połączenia z bazą danych
+                connection.Close();
+
+                MessageBox.Show("Dodano samochód do bazy danych");
+
+                this.Hide();
+                samochody.ShowDialog();
+                samochody.pokaz_siatke();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Uzupelnij wszystkie pola");
+            }
+
+
         }
 
         private void btn_DSCofnij_Click(object sender, EventArgs e)

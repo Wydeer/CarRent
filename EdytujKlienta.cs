@@ -22,26 +22,41 @@ namespace Wypozyczalnia
 
         private void btn_EKDodaj_Click(object sender, EventArgs e)
         {
+            
+
             Klient klient = new Klient();
             Klienci klienci = new Klienci();
 
-            SqlConnection sqlConnection = new SqlConnection(conn);
-            sqlConnection.Open();
-            SqlCommand command = new SqlCommand("UPDATE Klient SET imie = @imie, nazwisko = @nazwisko, data_ur = @dataur, pesel = @pesel, telefon = @telefon, mail = @email, staly_klient = @stalyklient, data_waznosci_prawa_jazdy = @datawaznosciprawka, numer_dowodu = @numerdowodu WHERE id_klienta = @id", sqlConnection);
-            command.Parameters.AddWithValue("@id", label10.Text);
-            command.Parameters.AddWithValue("@imie", txt_Eimie.Text);
-            command.Parameters.AddWithValue("@nazwisko", txt_Enazwisko.Text);
-            command.Parameters.AddWithValue("@dataur", dtp_Edata_ur.Value);
-            command.Parameters.AddWithValue("@pesel", txt_Epesel.Text);
-            command.Parameters.AddWithValue("@telefon", txt_Etelefon.Text);
-            command.Parameters.AddWithValue("@email", txt_Eemail.Text);
-            command.Parameters.AddWithValue("@stalyklient", EcheckBox_staly_klient.Checked);
-            command.Parameters.AddWithValue("@datawaznosciprawka", Edtp_data_waznosci_pj.Value);
-            command.Parameters.AddWithValue("@numerdowodu", Etxt_numer_dowodu.Text);
+            
+            DataSet ds = new DataSet();
 
+            
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Klient WHERE id_klienta = @id", conn);
+            adapter.SelectCommand.Parameters.AddWithValue("@id", label10.Text);
 
-            command.ExecuteNonQuery();
-            sqlConnection.Close();
+            
+            adapter.Fill(ds, "Klient");
+
+            
+            DataRow row = ds.Tables["Klient"].Rows[0];
+
+            
+            row["imie"] = txt_Eimie.Text;
+            row["nazwisko"] = txt_Enazwisko.Text;
+            row["data_ur"] = dtp_Edata_ur.Value;
+            row["pesel"] = txt_Epesel.Text;
+            row["telefon"] = txt_Etelefon.Text;
+            row["mail"] = txt_Eemail.Text;
+            row["staly_klient"] = EcheckBox_staly_klient.Checked;
+            row["data_waznosci_prawa_jazdy"] = Edtp_data_waznosci_pj.Value;
+            row["numer_dowodu"] = Etxt_numer_dowodu.Text;
+
+            
+            SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+
+            
+            adapter.Update(ds, "Klient");
+
             MessageBox.Show("Zaktualizowano dane klienta");
 
             this.Hide();
