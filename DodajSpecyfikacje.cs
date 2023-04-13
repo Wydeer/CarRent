@@ -106,5 +106,12 @@ namespace Wypozyczalnia
             MessageBox.Show("Zaktualizowano dane w bazie danych");
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Samochody samochody = new Samochody();
+            samochody.Show();
+        }
     }
 }

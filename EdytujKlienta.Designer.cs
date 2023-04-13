@@ -53,10 +53,10 @@
             // 
             // btn_EKCofnij
             // 
-            this.btn_EKCofnij.Location = new System.Drawing.Point(288, 294);
+            this.btn_EKCofnij.Location = new System.Drawing.Point(278, 286);
             this.btn_EKCofnij.Margin = new System.Windows.Forms.Padding(2);
             this.btn_EKCofnij.Name = "btn_EKCofnij";
-            this.btn_EKCofnij.Size = new System.Drawing.Size(56, 19);
+            this.btn_EKCofnij.Size = new System.Drawing.Size(66, 35);
             this.btn_EKCofnij.TabIndex = 59;
             this.btn_EKCofnij.Text = "Cofnij";
             this.btn_EKCofnij.UseVisualStyleBackColor = true;
@@ -64,12 +64,12 @@
             // 
             // btn_EKDodaj
             // 
-            this.btn_EKDodaj.Location = new System.Drawing.Point(190, 294);
+            this.btn_EKDodaj.Location = new System.Drawing.Point(185, 286);
             this.btn_EKDodaj.Margin = new System.Windows.Forms.Padding(2);
             this.btn_EKDodaj.Name = "btn_EKDodaj";
-            this.btn_EKDodaj.Size = new System.Drawing.Size(56, 19);
+            this.btn_EKDodaj.Size = new System.Drawing.Size(72, 35);
             this.btn_EKDodaj.TabIndex = 58;
-            this.btn_EKDodaj.Text = "Dodaj";
+            this.btn_EKDodaj.Text = "Edytuj";
             this.btn_EKDodaj.UseVisualStyleBackColor = true;
             this.btn_EKDodaj.Click += new System.EventHandler(this.btn_EKDodaj_Click);
             // 
@@ -246,6 +246,7 @@
             this.label10.Size = new System.Drawing.Size(41, 13);
             this.label10.TabIndex = 60;
             this.label10.Text = "label10";
+            this.label10.Visible = false;
             // 
             // EdytujKlienta
             // 

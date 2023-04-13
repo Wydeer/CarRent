@@ -47,6 +47,7 @@
             // 
             this.txt_haslo.Location = new System.Drawing.Point(101, 133);
             this.txt_haslo.Name = "txt_haslo";
+            this.txt_haslo.PasswordChar = '*';
             this.txt_haslo.Size = new System.Drawing.Size(221, 20);
             this.txt_haslo.TabIndex = 1;
             // 

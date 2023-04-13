@@ -142,7 +142,7 @@
             this.btn_ESEdytuj.Name = "btn_ESEdytuj";
             this.btn_ESEdytuj.Size = new System.Drawing.Size(75, 23);
             this.btn_ESEdytuj.TabIndex = 29;
-            this.btn_ESEdytuj.Text = "Dodaj";
+            this.btn_ESEdytuj.Text = "Edytuj";
             this.btn_ESEdytuj.UseVisualStyleBackColor = true;
             this.btn_ESEdytuj.Click += new System.EventHandler(this.btn_ESEdytuj_Click);
             // 

@@ -63,7 +63,7 @@ namespace Wypozyczalnia
             if (MessageBox.Show("Czy na pewno chcesz usunąć ten samochod?", "Uwaga", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 int selectedRow = dgv_samochody.CurrentRow.Index;
-                int selectedId = Convert.ToInt32(dgv_samochody.Rows[selectedRow].Cells["id_samochodu"].Value);
+                int selectedId = Convert.ToInt32(dgv_samochody.Rows[selectedRow].Cells[0].Value);
 
                 using (SqlConnection connection = new SqlConnection(conn))
                 {

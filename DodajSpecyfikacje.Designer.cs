@@ -45,6 +45,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btn_SEdytuj = new System.Windows.Forms.Button();
             this.cbx_typpaliwa = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txt_Markasilnika
@@ -154,7 +155,7 @@
             // 
             // btn_DSpecyfikacje
             // 
-            this.btn_DSpecyfikacje.Location = new System.Drawing.Point(66, 342);
+            this.btn_DSpecyfikacje.Location = new System.Drawing.Point(36, 329);
             this.btn_DSpecyfikacje.Name = "btn_DSpecyfikacje";
             this.btn_DSpecyfikacje.Size = new System.Drawing.Size(100, 23);
             this.btn_DSpecyfikacje.TabIndex = 14;
@@ -174,7 +175,7 @@
             // 
             // btn_SEdytuj
             // 
-            this.btn_SEdytuj.Location = new System.Drawing.Point(198, 342);
+            this.btn_SEdytuj.Location = new System.Drawing.Point(142, 329);
             this.btn_SEdytuj.Name = "btn_SEdytuj";
             this.btn_SEdytuj.Size = new System.Drawing.Size(96, 23);
             this.btn_SEdytuj.TabIndex = 16;
@@ -196,11 +197,22 @@
             this.cbx_typpaliwa.Size = new System.Drawing.Size(109, 21);
             this.cbx_typpaliwa.TabIndex = 17;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(244, 329);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(92, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Cofnij";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // DodajSpecyfikacje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(367, 402);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbx_typpaliwa);
             this.Controls.Add(this.btn_SEdytuj);
             this.Controls.Add(this.label8);
@@ -245,5 +257,6 @@
         public System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_SEdytuj;
         private System.Windows.Forms.ComboBox cbx_typpaliwa;
+        private System.Windows.Forms.Button button1;
     }
 }
