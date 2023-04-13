@@ -95,33 +95,35 @@ namespace Wypozyczalnia
 
         private void btn_UModyfikuj_Click(object sender, EventArgs e)
         {
-            
-            SqlConnection conn = new SqlConnection(Conn.conn);
+            try
+            {
+                SqlConnection conn = new SqlConnection(Conn.conn);
 
-            
-            conn.Open();
 
-            
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Ubezpieczenie", conn);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
+                conn.Open();
 
-            
-            DataRow row = table.Rows[dgv_ubezpieczenia.CurrentRow.Index];
-            row["data_od"] = dtp_EUdata_od.Value;
-            row["data_do"] = dtp_EUdata_do.Value;
-            row["typ"] = cbx_EUtyp.Text;
 
-            
-            SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
-            adapter.Update(table);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Ubezpieczenie", conn);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
 
-            
-            conn.Close();
 
-            MessageBox.Show("Zmodyfikowano ubezpieczenie");
-            pokaz_siatke();
+                DataRow row = table.Rows[dgv_ubezpieczenia.CurrentRow.Index];
+                row["data_od"] = dtp_EUdata_od.Value;
+                row["data_do"] = dtp_EUdata_do.Value;
+                row["typ"] = cbx_EUtyp.Text;
 
+
+                SqlCommandBuilder builder = new SqlCommandBuilder(adapter);
+                adapter.Update(table);
+
+
+                conn.Close();
+
+                MessageBox.Show("Zmodyfikowano ubezpieczenie");
+                pokaz_siatke();
+            }
+            catch (Exception ex) { }
 
         }
 

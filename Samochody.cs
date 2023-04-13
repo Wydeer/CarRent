@@ -131,14 +131,20 @@ namespace Wypozyczalnia
 
         private void btn_specyfikacja_Click(object sender, EventArgs e)
         {
-            Samochod samochod = new Samochod();
-            samochod.id_samochodu = (int)dgv_samochody.CurrentRow.Cells[0].Value;
+            try
+            {
+                Samochod samochod = new Samochod();
+                samochod.id_samochodu = (int)dgv_samochody.CurrentRow.Cells[0].Value;
 
-            DodajSpecyfikacje dodajSpecyfikacje = new DodajSpecyfikacje();
-            dodajSpecyfikacje.label8.Text = samochod.id_samochodu.ToString();
-            this.Hide();
-            dodajSpecyfikacje.Show();
-
+                DodajSpecyfikacje dodajSpecyfikacje = new DodajSpecyfikacje();
+                dodajSpecyfikacje.label8.Text = samochod.id_samochodu.ToString();
+                this.Hide();
+                dodajSpecyfikacje.Show();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Wybierz samochód");
+            }
 
 
 

@@ -47,24 +47,32 @@ namespace Wypozyczalnia
 
         private void btn_Zwrot_Click(object sender, EventArgs e)
         {
+
+            try
+            {
+                SqlConnection conn = new SqlConnection(Conn.conn);
+                conn.Open();
+                SqlCommand updateCommand = new SqlCommand("UPDATE Samochod SET status = 'Dostępny' WHERE id_samochodu = @id_samochodu", conn);
+                updateCommand.Parameters.AddWithValue("@id_samochodu", dgv_Wypozyczenia.CurrentRow.Cells[0].Value);
+                updateCommand.ExecuteNonQuery();
+                conn.Close();
+
+
+                conn.Open();
+                SqlCommand deleteCommand = new SqlCommand("DELETE FROM Wypozyczenia WHERE id_samochodu = @id_samochodu", conn);
+                deleteCommand.Parameters.AddWithValue("@id_samochodu", dgv_Wypozyczenia.CurrentRow.Cells[0].Value);
+                deleteCommand.ExecuteNonQuery();
+                conn.Close();
+
+                MessageBox.Show("Samochód został zwrócony");
+                pokaz_siatke();
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show("Wybierz wypozyczenie");
+            }
+           
             
-
-            SqlConnection conn = new SqlConnection(Conn.conn);
-            conn.Open();
-            SqlCommand updateCommand = new SqlCommand("UPDATE Samochod SET status = 'Dostępny' WHERE id_samochodu = @id_samochodu", conn);
-            updateCommand.Parameters.AddWithValue("@id_samochodu", dgv_Wypozyczenia.CurrentRow.Cells[0].Value);
-            updateCommand.ExecuteNonQuery();
-            conn.Close();
-
-            
-            conn.Open();
-            SqlCommand deleteCommand = new SqlCommand("DELETE FROM Wypozyczenia WHERE id_samochodu = @id_samochodu", conn);
-            deleteCommand.Parameters.AddWithValue("@id_samochodu", dgv_Wypozyczenia.CurrentRow.Cells[0].Value);
-            deleteCommand.ExecuteNonQuery();
-            conn.Close();
-
-            MessageBox.Show("Samochód został zwrócony");
-            pokaz_siatke();
         }
 
         private void button1_Click(object sender, EventArgs e)
