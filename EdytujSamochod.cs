@@ -66,7 +66,9 @@ namespace Wypozyczalnia
 
         private void btn_ESCofnij_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Samochody samochody = new Samochody();
+            samochody.ShowDialog();
         }
     }
 }
